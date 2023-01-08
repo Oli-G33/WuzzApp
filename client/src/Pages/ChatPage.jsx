@@ -5,21 +5,18 @@ import axios from 'axios';
 const ChatPage = () => {
   const [chats, setChats] = useState();
 
-  const fetchChats = async () => {
-    const data = await axios.get('http://localhost:5000/api/chat');
+  // const fetchChats = async () => {
+  //   const data = await axios.get('http://localhost:5000/api/chat');
 
-    setChats(data.data);
-  };
+  //   setChats(data.data);
+  // };
 
-  console.log(chats);
-
-  useEffect(() => {
-    fetchChats();
-  }, []);
+  // useEffect(() => {
+  //   fetchChats();
+  // }, []);
 
   return (
     <div>
-      {console.log(chats)}
       {/* {chats.map(chat => (
         <div>{chat.chatName}</div>
       ))} */}
