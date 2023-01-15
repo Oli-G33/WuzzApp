@@ -21,7 +21,7 @@ const SignUp = () => {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
   const toast = useToast();
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleClick = () => setShow(!show);
 
@@ -37,7 +37,6 @@ const SignUp = () => {
       });
       return;
     }
-    console.log(pics);
     if (pics.type === 'image/jpeg' || pics.type === 'image/png') {
       const data = new FormData();
       data.append('file', pics);
@@ -94,7 +93,7 @@ const SignUp = () => {
       setLoading(false);
       return;
     }
-    console.log(name, email, password, picture);
+
     try {
       const config = {
         headers: {
@@ -111,7 +110,7 @@ const SignUp = () => {
         },
         config
       );
-      console.log(data);
+
       toast({
         title: 'Registration Successful',
         status: 'success',
@@ -121,7 +120,7 @@ const SignUp = () => {
       });
       localStorage.setItem('userInfo', JSON.stringify(data));
       setLoading(false);
-      history('/chats');
+      navigate('/chats');
     } catch (error) {
       toast({
         title: 'Error Occured!',

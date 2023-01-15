@@ -11,17 +11,17 @@ const Login = () => {
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
   const toast = useToast();
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const submitHandler = async () => {
     setLoading(true);
     if (!email || !password) {
       toast({
-        title: 'Please fill all fields',
+        title: 'Please Fill all the Feilds',
         status: 'warning',
         duration: 5000,
         isClosable: true,
@@ -55,7 +55,7 @@ const Login = () => {
       });
       localStorage.setItem('userInfo', JSON.stringify(data));
       setLoading(false);
-      history('/chats');
+      navigate('/chats');
     } catch (error) {
       toast({
         title: 'Error Occured!',
@@ -110,7 +110,7 @@ const Login = () => {
         colorScheme="red"
         width="100%"
         onClick={() => {
-          setEmail('guest@wuzzapp.com');
+          setEmail('guest@example.com');
           setPassword('123456');
         }}
       >
