@@ -21,7 +21,7 @@ const Login = () => {
     setLoading(true);
     if (!email || !password) {
       toast({
-        title: 'Please Fill all the Feilds',
+        title: 'Please fill all fields',
         status: 'warning',
         duration: 5000,
         isClosable: true,
@@ -31,7 +31,6 @@ const Login = () => {
       return;
     }
 
-    // console.log(email, password);
     try {
       const config = {
         headers: {
@@ -45,7 +44,6 @@ const Login = () => {
         config
       );
 
-      // console.log(JSON.stringify(data));
       toast({
         title: 'Login Successful',
         status: 'success',
@@ -54,8 +52,10 @@ const Login = () => {
         position: 'bottom'
       });
       localStorage.setItem('userInfo', JSON.stringify(data));
+      console.log(data);
       setLoading(false);
       navigate('/chats');
+      location.reload();
     } catch (error) {
       toast({
         title: 'Error Occured!',
