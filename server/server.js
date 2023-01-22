@@ -10,7 +10,17 @@ const path = require('path');
 
 connectDB();
 const app = express();
+app.use(express.static('public'));
 app.use(express.json());
+
+app.use(
+  cors({
+    ...(process.env.CLIENT_APP_ORIGINS && {
+      origin: process.env.CLIENT_APP_ORIGINS.split(',')
+    }),
+    credentials: true
+  })
+);
 
 const PORT = process.env.PORT || 5000;
 

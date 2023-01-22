@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "build": "npm install && cd client && npm run build",
-    "start": "nodemon server/server.js"
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
   },
   "author": "Oliver Garcia",
   "license": "ISC",
