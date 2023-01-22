@@ -7,6 +7,7 @@ const chatRoutes = require('./Routes/chatRoutes');
 const messageRoutes = require('./Routes/messageRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 const path = require('path');
+const cors = require('cors');
 
 connectDB();
 const app = express();
