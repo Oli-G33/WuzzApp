@@ -7,16 +7,27 @@ const chatRoutes = require('./Routes/chatRoutes');
 const messageRoutes = require('./Routes/messageRoutes');
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 const path = require('path');
+const cors = require('cors');
 
 connectDB();
 const app = express();
+app.use(express.static('public'));
 app.use(express.json());
+
+app.use(
+  cors({
+    ...(process.env.CLIENT_APP_ORIGINS && {
+      origin: process.env.CLIENT_APP_ORIGINS.split(',')
+    }),
+    credentials: true
+  })
+);
 
 const PORT = process.env.PORT || 5000;
 
-app.get('/', (req, res) => {
-  res.send(`API is running successfully`);
-});
+// app.get('/', (req, res) => {
+//   res.send(`API is running successfully`);
+// });
 
 app.use('/api/user', userRoutes);
 app.use('/api/chat', chatRoutes);
@@ -49,7 +60,7 @@ app.get('/api/chat/:id', (req, res) => {
   res.send(singleChat);
 });
 
-const server = app.listen(5000, console.log('Server started on PORT 5000'));
+const server = app.listen(PORT, console.log(`Server started on PORT ${PORT}`));
 const io = require('socket.io')(server, {
   pingTimeout: 60000,
   cors: { origin: 'https://wuzzapp.onrender.com' }
