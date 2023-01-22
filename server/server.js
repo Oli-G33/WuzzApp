@@ -52,7 +52,7 @@ app.get('/api/chat/:id', (req, res) => {
 const server = app.listen(5000, console.log('Server started on PORT 5000'));
 const io = require('socket.io')(server, {
   pingTimeout: 60000,
-  cors: { origin: 'http://localhost:3000' }
+  cors: { origin: 'https://wuzzapp.onrender.com' }
 });
 
 io.on('connection', socket => {
