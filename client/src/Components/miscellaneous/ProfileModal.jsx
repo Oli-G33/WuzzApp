@@ -43,7 +43,7 @@ const ProfileModal = ({ user, children }) => {
           <ModalCloseButton />
           <ModalBody
             display="flex"
-            flexDir="column"
+            flexDirection="column"
             alignItems="center"
             justifyContent="space-between"
           >
